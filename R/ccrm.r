@@ -8,11 +8,10 @@ ccrm.default <- function(formula1, formula2, data, ...) {
 		qx.R <- qr(x.R)
 		coef.C <- solve.qr(qx.C, y.C)
 	
-		## calc coef.R
 		Met4 <- list(y=y.R, w=rep(1,length(y.R)), X=x.R, C=matrix(0,0,0),
         		p=rep(1, ncol(x.R)), off=array(0,0), S=list(),sp=array(0,0),
          		Ain=diag(ncol(x.R)), bin=rep(0, ncol(x.R)))
-		require("mgcv")
+
 		Beta4 <- pcls(Met4)
 		
 		coef.R <- Beta4
@@ -35,7 +34,6 @@ ccrm.default <- function(formula1, formula2, data, ...) {
 			df.R = df.R)
 	}
 
-	## extract terms
     	mf.C <- model.frame(formula=formula1,data=data)
     	x.C <- model.matrix(attr(mf.C, "terms"), data=mf.C)
     	y.C <- model.response(mf.C)
@@ -43,7 +41,6 @@ ccrm.default <- function(formula1, formula2, data, ...) {
     	x.R <- model.matrix(attr(mf.R, "terms"), data=mf.R)
     	y.R <- model.response(mf.R)
 
-	## calc
 	x.C <- as.matrix(x.C)
     	x.R <- as.matrix(x.R)
     	y.C <- as.numeric(y.C)
@@ -69,9 +66,7 @@ print.ccrm <- function(x, ...)
     names(x$coefficients.R)[1] <- "(Intercept)"
     print(list(coefficients.C = x$coefficients.C, coefficients.R = x$coefficients.R,
 	   sigma.C = x$sigma.C, sigma.R = x$sigma.R,
-	   df.C = x$df.C, df.R = x$df.R,
-	   fitted.values.l = x$fitted.values.l, fitted.values.u = x$fitted.values.u,
-	   residuals.l = x$residuals.l, residuals.u = x$residuals.u))
+	   df.C = x$df.C, df.R = x$df.R))
 }
 
 summary.ccrm <- function(object, ...)

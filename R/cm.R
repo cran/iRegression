@@ -1,4 +1,6 @@
-cm <- function(formula1,formula2, data, ...) UseMethod("cm")
+cm <- function(formula1,formula2, data, ...){
+  UseMethod("cm")
+} 
 
 cm.default <- function (formula1, formula2, data,...)
 {
@@ -19,14 +21,14 @@ cm.default <- function (formula1, formula2, data,...)
 	        sigma = sqrt(sigma2),
 	        df = df)
 	}
-    ## extract terms
+
     mf1 <- model.frame(formula=formula1,data=data)
     x1 <- model.matrix(attr(mf1, "terms"), data=mf1)
     y1 <- model.response(mf1)
     mf2 <- model.frame(formula=formula2,data=data)
     x2 <- model.matrix(attr(mf2, "terms"), data=mf2)
     y2 <- model.response(mf2)
-    ## calc
+
     x1 <- as.matrix(x1)
     x2 <- as.matrix(x2)
     y1 <- as.numeric(y1)
@@ -48,9 +50,7 @@ print.cm <- function(x, ...)
     cat("\n")
     names(x$coefficients)[-1] <- seq(1,length(names(x$coefficients)[-1]))
     print(list(coefficients = x$coefficients,
-	   sigma = x$sigma, df = x$df,
-	   fitted.values.l = x$fitted.values.l, fitted.values.u = x$fitted.values.u,
-	   residuals.l = x$residuals.l, residuals.u = x$residuals.u))
+	   sigma = x$sigma, df = x$df))
 }
 
 summary.cm <- function(object, ...)

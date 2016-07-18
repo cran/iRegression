@@ -1,7 +1,10 @@
-crm <- function(formula1,formula2, data, ...) UseMethod("crm")
+crm <- function(formula1, formula2, data,...) UseMethod("crm")
 
 crm.default <- function (formula1, formula2, data,...)
 {
+  formula1 = as.formula(formula1)
+  formula2 = as.formula(formula2)
+  
 	crmEst <- function(x.C, x.R, y.C, y.R)
 	{
 	    qx.C <- qr(x.C)
@@ -25,14 +28,14 @@ crm.default <- function (formula1, formula2, data,...)
 	        sigma.R = sqrt(sigma2.R),
 	        df.R = df.R)
 	}
-    ## extract terms
+
     mf.C <- model.frame(formula=formula1,data=data)
     x.C <- model.matrix(attr(mf.C, "terms"), data=mf.C)
     y.C <- model.response(mf.C)
     mf.R <- model.frame(formula=formula2,data=data)
     x.R <- model.matrix(attr(mf.R, "terms"), data=mf.R)
     y.R <- model.response(mf.R)
-    ## calc
+
     x.C <- as.matrix(x.C)
     x.R <- as.matrix(x.R)
     y.C <- as.numeric(y.C)
@@ -54,9 +57,7 @@ print.crm <- function(x, ...)
     cat("\n")
     print(list(coefficients.C = x$coefficients.C, coefficients.R = x$coefficients.R,
 	   sigma.C = x$sigma.C, sigma.R = x$sigma.R,
-	   df.C = x$df.C, df.R = x$df.R,
-	   fitted.values.l = x$fitted.values.l, fitted.values.u = x$fitted.values.u,
-	   residuals.l = x$residuals.l, residuals.u = x$residuals.u))
+	   df.C = x$df.C, df.R = x$df.R))
 }
 
 summary.crm <- function(object, ...)

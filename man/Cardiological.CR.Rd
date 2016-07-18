@@ -40,7 +40,7 @@ Federation of Classification Societies}, Springer-Verlag, pp. 369-374.
 \examples{
 data("Cardiological.CR", package = "iRegression")
 
-crm1 <- crm(PulseC~SystC+DiastC,PulseR~SystR+DiastR,data=Cardiological.CR)
+crm1 <- crm("PulseC~SystC+DiastC","PulseR~SystR+DiastR",data=Cardiological.CR)
 summary(crm1)
 }
 

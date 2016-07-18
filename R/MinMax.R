@@ -25,14 +25,14 @@ MinMax.default <- function(formula1,formula2, data, ...)
 	        sigma.u = sqrt(sigma2.u),
 	        df.u = df.u)
 	}
-    ## extract terms
+
     mf1 <- model.frame(formula=formula1,data=data)
     x1 <- model.matrix(attr(mf1, "terms"), data=mf1)
     y1 <- model.response(mf1)
     mf2 <- model.frame(formula=formula2,data=data)
     x2 <- model.matrix(attr(mf2, "terms"), data=mf2)
     y2 <- model.response(mf2)
-    ## calc
+
     x1 <- as.matrix(x1)
     x2 <- as.matrix(x2)
     y1 <- as.numeric(y1)
@@ -54,9 +54,7 @@ print.MinMax <- function(x, ...)
     cat("\n")
     print(list(coefficients.l = x$coefficients.l, coefficients.u = x$coefficients.u,
 	   sigma.l = x$sigma.l, sigma.u = x$sigma.u,
-	   df.l = x$df.l, df.u = x$df.u,
-	   fitted.values.l = x$fitted.values.l, fitted.values.u = x$fitted.values.u,
-	   residuals.l = x$residuals.l, residuals.u = x$residuals.u))
+	   df.l = x$df.l, df.u = x$df.u))
 }
 
 summary.MinMax <- function(object, ...)

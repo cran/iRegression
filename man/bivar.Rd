@@ -48,7 +48,7 @@ interval-valued variables. \emph{Journal of Statistical Computation and Simulati
 
 }
 
-\author{ Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} , Claudio A. V. de Souza Filho \email{cldsza@gmail.com}  }
+\author{Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} , Claudio A. V. de Souza Filho and Pedro R. D. Marinho  }
 
 \note{
 \code{lig1} and \code{lig2} must be "\code{identity}", "\code{inverse}" or "\code{log}" for identity, inverse or logarithmic link functions, respectively.
@@ -60,7 +60,7 @@ interval-valued variables. \emph{Journal of Statistical Computation and Simulati
 
 \examples{
 data("soccer.bivar", package = "iRegression")
-ex.bivar <- bivar(yMin~t1Min+t2Min, "identity", yMax~t1Max+t2Max, "identity", data=soccer.bivar)
+ex.bivar <- bivar("yMin~t1Min+t2Min", "identity", "yMax~t1Max+t2Max", "identity", data=soccer.bivar)
 ex.bivar
 }
 \keyword{bivar}

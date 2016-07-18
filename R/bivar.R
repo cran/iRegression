@@ -1,12 +1,12 @@
-bivar <- function (formula1, lig1, formula2, lig2, data, ...) UseMethod("bivar")
+bivar <- function (formula1, lig1, formula2, lig2, data, ...){
+  UseMethod("bivar")
+} 
 
 bivar.default <- function (formula1, lig1, formula2, lig2, data, ...) {
 
 	bivarEst <- function (x1, x2, y1, y2, lig1, lig2) {
 		
 		ro.update = 0
-		
-		## chutes iniciais
 		
 		beta1 <- as.vector(coef(lm(y1 ~ x1)))
 		beta2 <- as.vector(coef(lm(y2 ~ x2)))
@@ -66,8 +66,6 @@ bivar.default <- function (formula1, lig1, formula2, lig2, data, ...) {
 
 			par.atual = c(beta1,beta2,ro,fi)
 
-			# { W
-
 			V1 <- (
 				0.5 * (2 * (1/(1 - ro^2) * (1/(1 - ro^2))) + 2 * (ro/(1 - ro^2) *
 				(ro/(1 - ro^2)))) - (ro * (1/(1 - ro^2)) * (ro/(1 - ro^2)) +
@@ -85,17 +83,11 @@ bivar.default <- function (formula1, lig1, formula2, lig2, data, ...) {
 			zeros <- matrix(0,nrow(x1),nrow(x1))
 			W <- cbind(rbind(W1,zeros),rbind(zeros,W2))
 
-			# } W
-
-			# z {
-
 			G1 <- diag(deriv_mi1, nrow = nrow(x1))
 			G2 <- diag(deriv_mi2, nrow = nrow(x2))
 			z1 <- G1%*%(y1 - mi1)
 			z2 <- G2%*%(y2 - mi2)
 			z <- rbind(z1,z2)
-
-			# } z
 
 			beta <- rbind(as.matrix(beta1), as.matrix(beta2))
 
@@ -106,8 +98,6 @@ bivar.default <- function (formula1, lig1, formula2, lig2, data, ...) {
 
 			beta1 <- matrix(betan[seq(from=1,length.out=ncol(x1))])
 			beta2 <- matrix(betan[seq(from=1+ncol(x1),length.out=ncol(x1))])
-
-			###############Atualiza Rho ##################
 
 			for (i in 1:length(ro.seq)) {
 
@@ -121,8 +111,6 @@ bivar.default <- function (formula1, lig1, formula2, lig2, data, ...) {
 			}
 
 			ro = ro.seq[which(ro.update[] == max(ro.update))]
-
-			###################################################
 
 			eta1 <- x1%*%beta1
 			eta2 <- x2%*%beta2
@@ -154,7 +142,7 @@ bivar.default <- function (formula1, lig1, formula2, lig2, data, ...) {
 			flag = sum(abs((par.novo-par.atual)/par.atual)>0.0001)
 			inter = inter + 1
 
-		} # fim do while
+		} 
 
 		list(coefficients1 = as.matrix(beta1),
 			mi1 = mi1,
@@ -169,7 +157,6 @@ bivar.default <- function (formula1, lig1, formula2, lig2, data, ...) {
 			phi = fi)
 	}
 	
-	## extract terms
 	mf1 <- model.frame(formula=formula1,data=data)
 	x1 <- model.matrix(attr(mf1, "terms"), data=mf1)
 	y1 <- model.response(mf1)
@@ -178,7 +165,7 @@ bivar.default <- function (formula1, lig1, formula2, lig2, data, ...) {
 	x2 <- model.matrix(attr(mf2, "terms"), data=mf2)
 	y2 <- model.response(mf2)
 	lig2 <- lig2
-	## calc
+
 	x1 <- as.matrix(x1[,-1])
 	x2 <- as.matrix(x2[,-1])
 	y1 <- as.numeric(y1)
@@ -202,11 +189,8 @@ print.bivar <- function(x, ...) {
 	print(x$call)
 	cat("\n")
 	print(list(coefficients1 = x$coefficients1, coefficients2 = x$coefficients2,
-		fitted.values1 = x$fitted.values1, fitted.values2 = x$fitted.values2,
-		residuals1 = x$residuals1, residuals2 = x$residuals2, residual.deviance = x$rd, 
 		rho = x$rho,
-		phi = x$phi,
-		D = x$D)
+		phi = x$phi)
 	)
 }
 

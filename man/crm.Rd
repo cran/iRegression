@@ -43,7 +43,7 @@ Federation of Classification Societies}, Springer-Verlag, pp. 369-374.
 Lima Neto, E.A. and De Carvalho, F.A.T. (2008). Centre and range method to fitting a linear regression model on
 symbolic interval data. \emph{Computational Statistics and Data Analysis}, 52, 1500--1515.
 }
-\author{ Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} , Claudio A. V. de Souza Filho \email{cldsza@gmail.com}  }
+\author{ Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} , Claudio A. V. de Souza Filho  and Pedro R. D. Marinho  }
 
 \note{
 
@@ -56,7 +56,7 @@ symbolic interval data. \emph{Computational Statistics and Data Analysis}, 52, 1
 }
 \examples{
 data("Cardiological.CR", package = "iRegression")
-ex.crm <- crm(PulseC~SystC+DiastC,PulseR~SystR+DiastR,data=Cardiological.CR)
+ex.crm <- crm("PulseC~SystC+DiastC","PulseR~SystR+DiastR",data=Cardiological.CR)
 ex.crm
 }
 \keyword{crm}

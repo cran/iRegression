@@ -41,7 +41,7 @@ Lima Neto, E.A. and De Carvalho, F.A.T. (2010). Constrained linear regression mo
 symbolic interval-valued variables. \emph{Computational Statistics and Data Analysis}, 54, 333--347.
 
 }
-\author{ Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} , Claudio A. V. de Souza Filho \email{cldsza@gmail.com}  }
+\author{ Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} , Claudio A. V. de Souza Filho and Pedro R. D. Marinho  }
 
 \note{
 
@@ -54,7 +54,7 @@ symbolic interval-valued variables. \emph{Computational Statistics and Data Anal
 }
 \examples{
 data("Cardiological.CR", package = "iRegression")
-ex.ccrm <- ccrm(PulseC~SystC+DiastC,PulseR~SystR+DiastR,data=Cardiological.CR)
+ex.ccrm <- ccrm("PulseC~SystC+DiastC","PulseR~SystR+DiastR",data=Cardiological.CR)
 ex.ccrm
 }
 \keyword{ccrm}

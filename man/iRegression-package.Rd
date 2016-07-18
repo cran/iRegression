@@ -3,10 +3,10 @@
 \alias{iRegression}
 
 \docType{package}
-\title{ Regression methods for interval-valued variables }
+\title{ Regression Methods for Interval-Valued Variables }
 \description{
 
-This package contains some important regression methods for interval-valued variables.
+Contains some important regression methods for interval-valued variables.
 For each method, it is available the fitted values, residuals and some goodness-of-fit measures.
 
 }
@@ -14,8 +14,8 @@ For each method, it is available the fitted values, residuals and some goodness-
 \tabular{ll}{
 Package: \tab iRegression\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2011-06-01\cr
+Version: \tab 1.2.1\cr
+Date: \tab 2016-07-16 \cr
 License: \tab GPL (>= 2) \cr
 LazyLoad: \tab yes\cr
 }
@@ -24,7 +24,7 @@ Some available functions:
 \code{\link{cm}}, \code{\link{MinMax}}, \code{\link{crm}}, \code{\link{ccrm}}, \code{\link{bivar}}}
 
 \author{
-Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} and Claudio A. V. de Souza Filho \email{cldsza@gmail.com}
+Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} , Claudio A. V. de Souza Filho and Pedro R. D. Marinho
 
 Maintainer: Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br}
 

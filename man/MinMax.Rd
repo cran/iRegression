@@ -50,7 +50,7 @@ symbolic interval data. \emph{Computational Statistics and Data Analysis}, \bold
 
 }
 
-\author{ Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} , Claudio A. V. de Souza Filho \email{cldsza@gmail.com}  }
+\author{ Eufrasio de A. Lima Neto \email{eufrasio@de.ufpb.br} , Claudio A. V. de Souza Filho  and Pedro R. D. Marinho  }
 
 \note{
 \code{formula1} must contain the lower limit of the symbolic interval-valued variables. \code{formula2} contain the upper limit of the symbolic interval-valued variables.
